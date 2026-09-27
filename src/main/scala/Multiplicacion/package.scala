@@ -25,4 +25,19 @@ package object Multiplicacion {
       math.pow(10,m+m).toInt*splitMultiply(x,z) + math.pow(10,m).toInt*(splitMultiply(y,z)+splitMultiply(x,w)) + splitMultiply(y,w)
     }
   }
+
+  def fastMultiply(a: Int, b: Int): Int = {
+    if (a == 0 || b == 0) a * b
+    val m = (math.max(math.log10(a).toInt, math.log10(b).toInt) + 1) / 2
+    if (m <= 0)
+      a * b
+    else {
+      val x = a / math.pow(10, m).toInt
+      val y = a % math.pow(10, m).toInt
+      val z = b / math.pow(10, m).toInt
+      val w = b % math.pow(10, m).toInt
+      math.pow(10, m + m).toInt * fastMultiply(x, z) + math.pow(10,m).toInt*(fastMultiply(x+y,z+w) - fastMultiply(x,z) - fastMultiply(y, w))  + fastMultiply(y, w)
+    }
+  }
+
 }
