@@ -13,7 +13,7 @@ package object Multiplicacion {
   }
 
   def splitMultiply(a: Int,b: Int): Int = {
-    if(a == 0 || b == 0) a*b
+    if(a == 0 && b == 0) a*b
     val m = (math.max(math.log10(a).toInt,math.log10(b).toInt)+1)/2
     if(m<=0)
       a*b
@@ -27,7 +27,7 @@ package object Multiplicacion {
   }
 
   def fastMultiply(a: Int, b: Int): Int = {
-    if (a == 0 || b == 0) a * b
+    if (a == 0 && b == 0) a * b
     val m = (math.max(math.log10(a).toInt, math.log10(b).toInt) + 1) / 2
     if (m <= 0)
       a * b
